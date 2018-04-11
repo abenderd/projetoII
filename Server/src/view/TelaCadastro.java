@@ -66,23 +66,22 @@ public class TelaCadastro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				CadastroDAO cadastroDao = new CadastroDAO();
-				
+
+				String nome = textFieldNome.getText();
 				String email = textFieldEmail.getText();
 				String senha = passwordField.getText();
 				String confirmacaoSenha = passwordFieldConfirmacao.getText();
 
-				if (email.isEmpty()) {
+				if (nome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campo nome deve ser preenchido.");
+				} else if (email.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo email deve ser preenchido.");
-					limparCampos();
 				} else if (cadastroDao.validaEmail(email) == false) {
-					JOptionPane.showMessageDialog(null, "Email invalido");
-					limparCampos();
+					JOptionPane.showMessageDialog(null, "Email invalido.");
 				} else if (senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo senha deve ser preenchido.");
-					limparCampos();
 				} else if (confirmacaoSenha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo confirmação de senha deve ser preenchido.");
-					limparCampos();
 				} else if (senha.equals(confirmacaoSenha)) {
 
 					CadastroDBO dbos = new CadastroDBO(email, senha);
@@ -98,7 +97,6 @@ public class TelaCadastro extends JFrame {
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "Senha e confirmação de senha não conferem.");
-					limparCampos();
 				}
 			}
 		});
@@ -157,7 +155,7 @@ public class TelaCadastro extends JFrame {
 		passwordFieldConfirmacao.setBounds(354, 114, 148, 20);
 		contentPane.add(passwordFieldConfirmacao);
 	}
-	
+
 	private void limparCampos() {
 		textFieldEmail.setText("");
 		passwordField.setText("");

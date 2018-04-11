@@ -54,7 +54,7 @@ public class TelaLogin extends JFrame {
 
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnEntrar.setBounds(292, 168, 105, 23);
+		btnEntrar.setBounds(307, 168, 105, 23);
 		contentPane.add(btnEntrar);
 
 		JButton btnCancelar = new JButton("Cancelar");
@@ -64,7 +64,7 @@ public class TelaLogin extends JFrame {
 			}
 		});
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnCancelar.setBounds(167, 168, 105, 23);
+		btnCancelar.setBounds(178, 168, 105, 23);
 		contentPane.add(btnCancelar);
 
 		JButton btnCadastrar = new JButton("Cadastrar-se");
@@ -77,11 +77,11 @@ public class TelaLogin extends JFrame {
 			}
 		});
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnCadastrar.setBounds(40, 168, 105, 23);
+		btnCadastrar.setBounds(36, 168, 117, 23);
 		contentPane.add(btnCadastrar);
 
 		textFieldEmail = new JTextField();
-		textFieldEmail.setBounds(127, 53, 271, 20);
+		textFieldEmail.setBounds(127, 53, 285, 20);
 		contentPane.add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 
