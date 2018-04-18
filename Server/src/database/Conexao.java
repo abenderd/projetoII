@@ -14,8 +14,8 @@ public class Conexao {
 		CadastroDAO _cadastroDao = null;
 
 		try {
-			_conexao = new MeuPreparedStatement("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-					"jdbc:sqlserver://DESKTOP-54DQGM1\\SQLEXPRESS:1433", "DESKTOP-54DQGM1\\abend", "");
+			_conexao = new MeuPreparedStatement("com.mysql.jdbc.Driver",
+					"jdbc:mysql://localhost:3306/dbprojetoc", "root", "");
 
 			_cadastroDao = new CadastroDAO();
 

@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.JPasswordField;
 
@@ -53,6 +54,24 @@ public class TelaLogin extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String email = textFieldEmail.getText();
+				String senha = passwordField.getText();
+				
+				if (email.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
+				} else if (senha.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
+				}
+				
+				TelaAplicacao login = new TelaAplicacao();
+				login.show();
+				dispose();
+			}
+		});
 		btnEntrar.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnEntrar.setBounds(307, 168, 105, 23);
 		contentPane.add(btnEntrar);

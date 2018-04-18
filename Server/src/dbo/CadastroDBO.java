@@ -7,11 +7,12 @@ import dao.CadastroDAO;
 public class CadastroDBO {
 	CadastroDAO cadastroDao = new CadastroDAO();
 
-	private String senha, email;
+	private String senha, email, nome;
 
-	public CadastroDBO(String email, String senha) {
+	public CadastroDBO(String email, String senha, String nome) {
 		this.email = email;
 		this.senha = senha;
+		this.nome = nome;
 	}
 
 	public void cadastroEmail(String email) {
@@ -24,9 +25,17 @@ public class CadastroDBO {
 
 	public void cadastroSenha(String senha) {
 		if (this.senha == null || "".equals(senha)) {
-			JOptionPane.showMessageDialog(null, "Senha invalida");
+			JOptionPane.showMessageDialog(null, "Senha invalida ou nula");
 		} else {
 			this.senha = senha;
+		}
+	}
+	
+	public void cadastroNome(String nome) {
+		if (this.nome == null || "".equals(nome)) {
+			JOptionPane.showMessageDialog(null, "Nome invalido ou nulo");
+		} else {
+			this.nome = nome;
 		}
 	}
 
@@ -45,6 +54,7 @@ public class CadastroDBO {
 		result = prime * result + ((cadastroDao == null) ? 0 : cadastroDao.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 
@@ -72,12 +82,17 @@ public class CadastroDBO {
 				return false;
 		} else if (!senha.equals(other.senha))
 			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CadastroDBO [cadastroDao=" + cadastroDao + ", senha=" + senha + ", email=" + email + "]";
+		return "CadastroDBO [cadastroDao=" + cadastroDao + ", senha=" + senha + ", email=" + email + ", nome=" + nome + "]";
 	}
 
 	public String getSenha() {
@@ -86,5 +101,9 @@ public class CadastroDBO {
 
 	public String getEmail() {
 		return email;
+	}
+	
+	public String getNome() {
+		return nome;
 	}
 }

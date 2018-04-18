@@ -1,8 +1,6 @@
 package dao;
 
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,18 +14,16 @@ public class CadastroDAO {
 
 	public void cadastro(CadastroDBO dbos) throws Exception {
 
-		String dataAtual = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
 		if (dbos == null)
 			throw new Exception("Cadastro nulo");
 
 		try {
-			String sql = "INSERT INTO tbl_jogador (email, senha, dataCadastro, qtdeVitorias) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO tbl_usuario (email, senha, nome) VALUES (?,?,?)";
 
 			Conexao.conexao.prepareStatement(sql);
 			Conexao.conexao.setString(1, dbos.getEmail());
 			Conexao.conexao.setString(2, dbos.getSenha());
-			Conexao.conexao.setString(3, dataAtual);
-			Conexao.conexao.setString(4, "0");
+			Conexao.conexao.setString(3, dbos.getNome());
 			Conexao.conexao.executeUpdate();
 			Conexao.conexao.commit();
 			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
@@ -56,7 +52,7 @@ public class CadastroDAO {
 		String sql;
 
 		try {
-			sql = "SELECT * " + "FROM tbl_jogador " + "WHERE email = ?";
+			sql = "SELECT * " + "FROM tbl_usuario " + "WHERE email = ?";
 
 			Conexao.conexao.prepareStatement(sql);
 
@@ -67,7 +63,7 @@ public class CadastroDAO {
 			if (!resultado.first())
 				throw new Exception("Usuario nao cadastrado.");
 
-			cadastroDBO = new CadastroDBO(resultado.getString("email"), resultado.getString("senha"));
+			cadastroDBO = new CadastroDBO(resultado.getString("email"), resultado.getString("senha"), resultado.getString("nome"));
 
 		} catch (Exception e) {
 			e.printStackTrace();

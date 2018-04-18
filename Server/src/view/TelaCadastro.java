@@ -84,7 +84,7 @@ public class TelaCadastro extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo confirmação de senha deve ser preenchido.");
 				} else if (senha.equals(confirmacaoSenha)) {
 
-					CadastroDBO dbos = new CadastroDBO(email, senha);
+					CadastroDBO dbos = new CadastroDBO(email, senha, nome);
 
 					try {
 						Conexao.cadastroDao.cadastro(dbos);
@@ -154,11 +154,5 @@ public class TelaCadastro extends JFrame {
 		passwordFieldConfirmacao = new JPasswordField();
 		passwordFieldConfirmacao.setBounds(354, 114, 148, 20);
 		contentPane.add(passwordFieldConfirmacao);
-	}
-
-	private void limparCampos() {
-		textFieldEmail.setText("");
-		passwordField.setText("");
-		passwordFieldConfirmacao.setText("");
 	}
 }
