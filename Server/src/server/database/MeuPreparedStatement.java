@@ -1,4 +1,4 @@
-package database;
+package server.database;
 
 import java.io.InputStream;
 import java.io.Reader;

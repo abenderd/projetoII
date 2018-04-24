@@ -1,8 +1,8 @@
-package dbo;
+package server.dbo;
 
 import javax.swing.JOptionPane;
 
-import dao.CadastroDAO;
+import server.dao.CadastroDAO;
 
 public class CadastroDBO {
 	CadastroDAO cadastroDao = new CadastroDAO();

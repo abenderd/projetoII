@@ -1,4 +1,4 @@
-package database;
+package server.database;
 
 import java.sql.Array;
 import java.sql.Blob;

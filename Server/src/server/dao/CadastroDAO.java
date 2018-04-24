@@ -1,4 +1,4 @@
-package dao;
+package server.dao;
 
 import java.sql.SQLException;
 import java.util.regex.Matcher;
@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
-import database.Conexao;
-import database.MeuResultSet;
-import dbo.CadastroDBO;
+import server.database.Conexao;
+import server.database.MeuResultSet;
+import server.dbo.CadastroDBO;
 
 public class CadastroDAO {
 
@@ -28,7 +28,7 @@ public class CadastroDAO {
 			Conexao.conexao.commit();
 			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Erro ao realizar cadastro." + e);
+			throw new Exception("Erro ao realizar cadastro." + e);
 		}
 	}
 
@@ -66,7 +66,7 @@ public class CadastroDAO {
 			cadastroDBO = new CadastroDBO(resultado.getString("email"), resultado.getString("senha"), resultado.getString("nome"));
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new Exception(e);
 		}
 
 		return cadastroDBO;

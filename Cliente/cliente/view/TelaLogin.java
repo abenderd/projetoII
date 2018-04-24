@@ -1,4 +1,4 @@
-package view;
+package cliente.view;
 
 import java.awt.EventQueue;
 
@@ -62,9 +62,9 @@ public class TelaLogin extends JFrame {
 				String senha = passwordField.getText();
 				
 				if (email.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
+					JOptionPane.showMessageDialog(null, "Campos obrigatï¿½rios nï¿½o preenchidos.");
 				} else if (senha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
+					JOptionPane.showMessageDialog(null, "Campos obrigatï¿½rios nï¿½o preenchidos.");
 				}
 				
 				TelaAplicacao login = new TelaAplicacao();

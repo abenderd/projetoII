@@ -1,8 +1,8 @@
-package database;
+package server.database;
 
 import javax.swing.JOptionPane;
 
-import dao.CadastroDAO;
+import server.dao.CadastroDAO;
 
 public class Conexao {
 
@@ -15,7 +15,7 @@ public class Conexao {
 
 		try {
 			_conexao = new MeuPreparedStatement("com.mysql.jdbc.Driver",
-					"jdbc:mysql://localhost:3306/dbprojetoc", "root", "");
+					"jdbc:mysql://127.0.0.1:3306/ProjetoII", "root", "");
 
 			_cadastroDao = new CadastroDAO();
 
