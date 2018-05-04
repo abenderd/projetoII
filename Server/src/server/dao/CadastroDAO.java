@@ -26,7 +26,7 @@ public class CadastroDAO {
 			Conexao.conexao.setString(3, dbos.getNome());
 			Conexao.conexao.executeUpdate();
 			Conexao.conexao.commit();
-			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+			throw new Exception("Cadastro do usuario: ("+ dbos.getNome() +") realizado com sucesso!");
 		} catch (SQLException e) {
 			throw new Exception("Erro ao realizar cadastro." + e);
 		}

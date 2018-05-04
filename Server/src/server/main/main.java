@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.Inet4Address;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,6 +19,13 @@ public class main {
 	
 	ArrayList<ConexaoRede> clientOutputStreams;
     public static void main(String[] args) {
+    	//PEGA O IP DO SERVIDOR
+    	try {
+			System.out.println(Inet4Address.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         new main().go();
     }
     
@@ -30,12 +39,11 @@ public class main {
 
 //            Mantem o servidor escutando
             while (true) {
+    			Socket connection = receptor.accept();
             	ConexaoRede conexao = new ConexaoRede();
-            	conexao.conecta(receptor);
                 clientOutputStreams.add(conexao);
-                Thread t = new Thread(new ClientHandler(conexao, receptor));
+                Thread t = new Thread(new ClientHandler(conexao, receptor, connection));
                 t.start();
-                System.out.println("Recebido uma nova conexão");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,15 +54,18 @@ public class main {
     private class ClientHandler implements Runnable {
     	ConexaoRede conexao;
     	ServerSocket receptor;
-        public ClientHandler(ConexaoRede conexao, ServerSocket receptor) throws IOException {
+    	Socket connection;
+        public ClientHandler(ConexaoRede conexao, ServerSocket receptor, Socket connection) throws IOException {
             this.conexao = conexao;
             this.receptor = receptor;
+            this.connection = connection;
         }
         
         @Override
         public void run() {
             try {
-                conexao.conecta(receptor);
+            	System.out.println("Recebido uma nova conexão");
+                conexao.conecta(receptor, connection);
             } catch (NullPointerException e){
             	System.out.println("Usuario Desconectado");
             }

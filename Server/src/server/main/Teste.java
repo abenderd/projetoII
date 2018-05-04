@@ -21,10 +21,10 @@ public class Teste {
 				transmissor.writeObject(mensagem);
 				transmissor.flush();
 			}
-			while(!mensagem.toUpperCase().equals("FIM"));
+			while(true);
 			
-			transmissor.close();
-			connection.close();
+			//transmissor.close();
+			//connection.close();
 		}
 		catch(Exception erro){
 			System.err.println(erro.getMessage());

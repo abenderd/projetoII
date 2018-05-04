@@ -14,7 +14,7 @@ public class Transmissor {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			transmissor.writeObject(menssagem);
 			transmissor.flush();
-			transmissor.close();
+			//transmissor.close();
 		}
 		catch(Exception erro){
 			System.err.println(erro.getMessage());
