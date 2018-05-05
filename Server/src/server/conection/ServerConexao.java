@@ -1,4 +1,4 @@
-package server.main;
+package server.conection;
 
 import java.io.ObjectInputStream;
 import java.net.ServerSocket;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import server.dao.CadastroDAO;
 import server.dbo.CadastroDBO;
 
-public class ConexaoRede {
+public class ServerConexao {
 	public void conecta(ServerSocket receptor,Socket connection){
 		try{
 			Transmissor t = new Transmissor();
@@ -46,7 +46,7 @@ public class ConexaoRede {
 						} catch (Exception e) {
 							t.transmite(connection, var2 + "/" + e);
 						}
-						t.transmite(connection, var2 + "/Cadastrado com sucesso");
+						t.transmite(connection, var2 + "Cadastrado com sucesso");
 					}else if(var1.equals("LOG")){
 						try {
 							cad = cadDao.getEmail(var2);
@@ -58,12 +58,12 @@ public class ConexaoRede {
 							// TODO Auto-generated catch block
 							t.transmite(connection,var2 + "/" + e);
 						}
-						t.transmite(connection,var2 + "/Logado com sucesso");
+						t.transmite(connection,var2 + "Logado com sucesso");
 					}else{
-						t.transmite(connection,var2 + "/MENSSAGEM INVALIDA");
+						t.transmite(connection,var2 + "MENSSAGEM INVALIDA");
 					}
 				}catch(Exception e){
-					t.transmite(connection,"/MENSSAGEM INVALIDA");
+					t.transmite(connection,"MENSSAGEM INVALIDA");
 					System.err.println("Menssagem invalida de: " + connection.toString());
 				}
 				

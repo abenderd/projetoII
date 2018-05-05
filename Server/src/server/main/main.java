@@ -1,23 +1,18 @@
 package server.main;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Inet4Address;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import server.dao.CadastroDAO;
-import server.dbo.CadastroDBO;
+import server.conection.ServerConexao;
 
 public class main {
 	
-	ArrayList<ConexaoRede> clientOutputStreams;
+	ArrayList<ServerConexao> clientOutputStreams;
+	
     public static void main(String[] args) {
     	//PEGA O IP DO SERVIDOR
     	try {
@@ -40,7 +35,7 @@ public class main {
 //            Mantem o servidor escutando
             while (true) {
     			Socket connection = receptor.accept();
-            	ConexaoRede conexao = new ConexaoRede();
+            	ServerConexao conexao = new ServerConexao();
                 clientOutputStreams.add(conexao);
                 Thread t = new Thread(new ClientHandler(conexao, receptor, connection));
                 t.start();
@@ -52,10 +47,10 @@ public class main {
 
 //    Cuida das conexoes com novos clientes
     private class ClientHandler implements Runnable {
-    	ConexaoRede conexao;
+    	ServerConexao conexao;
     	ServerSocket receptor;
     	Socket connection;
-        public ClientHandler(ConexaoRede conexao, ServerSocket receptor, Socket connection) throws IOException {
+        public ClientHandler(ServerConexao conexao, ServerSocket receptor, Socket connection) throws IOException {
             this.conexao = conexao;
             this.receptor = receptor;
             this.connection = connection;
