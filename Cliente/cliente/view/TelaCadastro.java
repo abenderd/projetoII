@@ -7,13 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import dao.CadastroDAO;
-import database.Conexao;
-import dbo.CadastroDBO;
+import cliente.conection.ClientConexao;
 
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -65,8 +65,6 @@ public class TelaCadastro extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 
-				CadastroDAO cadastroDao = new CadastroDAO();
-
 				String nome = textFieldNome.getText();
 				String email = textFieldEmail.getText();
 				String senha = passwordField.getText();
@@ -76,18 +74,21 @@ public class TelaCadastro extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo nome deve ser preenchido.");
 				} else if (email.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo email deve ser preenchido.");
-				} else if (cadastroDao.validaEmail(email) == false) {
+				} else if (validaEmail(email) == false) {
 					JOptionPane.showMessageDialog(null, "Email invalido.");
 				} else if (senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo senha deve ser preenchido.");
 				} else if (confirmacaoSenha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campo confirmaï¿½ï¿½o de senha deve ser preenchido.");
+					JOptionPane.showMessageDialog(null, "Campo confirmação de senha deve ser preenchido.");
 				} else if (senha.equals(confirmacaoSenha)) {
 
-					CadastroDBO dbos = new CadastroDBO(email, senha, nome);
-
 					try {
-						Conexao.cadastroDao.cadastro(dbos);
+						String ipServidor = new TelaConexaoCliente().conexao();
+
+						String mensagem = "CAD/" + email + "/" + nome + "/" + senha;
+
+						ClientConexao c = new ClientConexao(ipServidor);
+						c.Envia(mensagem);
 					} catch (Exception erro) {
 						System.out.println(erro);
 					}
@@ -154,5 +155,20 @@ public class TelaCadastro extends JFrame {
 		passwordFieldConfirmacao = new JPasswordField();
 		passwordFieldConfirmacao.setBounds(354, 114, 148, 20);
 		contentPane.add(passwordFieldConfirmacao);
+	}
+
+	public boolean validaEmail(String email) {
+		{
+			boolean isEmailIdValid = false;
+			if (email != null && email.length() > 0) {
+				String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+				Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+				Matcher matcher = pattern.matcher(email);
+				if (matcher.matches()) {
+					isEmailIdValid = true;
+				}
+			}
+			return isEmailIdValid;
+		}
 	}
 }

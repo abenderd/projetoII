@@ -14,7 +14,7 @@ public class Conexao {
 		CadastroDAO _cadastroDao = null;
 
 		try {
-			_conexao = new MeuPreparedStatement("com.mysql.jdbc.Driver","jdbc:mysql://localhost:3306/dbprojetoc", "root", "");
+			_conexao = new MeuPreparedStatement("com.mysql.jdbc.Driver","jdbc:mysql://127.0.0.1:3306/ProjetoII", "root", "");
 
 
 			_cadastroDao = new CadastroDAO();

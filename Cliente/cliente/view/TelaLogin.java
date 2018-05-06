@@ -72,13 +72,12 @@ public class TelaLogin extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
 				}
 				
-				String conexao = new TelaConexaoCliente().conexao();
-				
+				String ipServidor = new TelaConexaoCliente().conexao();
+								
 				String mensagem = "LOG/" + email + "/" + nome + "/" + senha;
 				
-				ClientConexao c = new ClientConexao(conexao);
+				ClientConexao c = new ClientConexao(ipServidor);
 				c.Envia(mensagem);
-				c.Recebe();
 				
 				TelaAplicacao login = new TelaAplicacao();
 				login.show();

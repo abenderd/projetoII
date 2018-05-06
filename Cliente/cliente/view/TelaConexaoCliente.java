@@ -100,9 +100,8 @@ public class TelaConexaoCliente extends JFrame {
 
 	public String conexao() throws UnknownHostException, IOException {
 		String ipServidor = textFieldIpServidor.getText();
-
-		ClientConexao c = new ClientConexao(ipServidor);
-		c.Recebe();
+		
+		new ClientConexao(ipServidor);
 
 		return ipServidor;
 	}
