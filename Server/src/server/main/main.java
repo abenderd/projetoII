@@ -59,7 +59,7 @@ public class main {
         @Override
         public void run() {
             try {
-            	System.out.println("Recebido uma nova conex√£o");
+            	System.out.println("Recebido uma nova conex„o.");
                 conexao.conecta(receptor, connection);
             } catch (NullPointerException e){
             	System.out.println("Usuario Desconectado");

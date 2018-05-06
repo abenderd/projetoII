@@ -11,16 +11,15 @@ public class ClientMain {
 
 	public static void main(String[] args) {
 
-		
-		//FALTA FAZER MODO GRAFICO, FEITO EM TEXTO PARA TESTE
-		//AS MENSSAGENS QUE O SERVIDOR PRECISA RECEBER SAO ASSIM
-		//(VAR1/VAR2/VAR3/VAR4)
-		//VAR1 - LOG OU CAD
-		//VAR2 - EMAIL
-		//VAR3 - NOME
-		//VAR4 - SENHA
-		//LOG - LOGIN (LOG/EMAIL/NOME/SENHA)
-		//CAD - CADASTRO (CAD/EMAIL/NOME/SENHA)
+		// FALTA FAZER MODO GRAFICO, FEITO EM TEXTO PARA TESTE
+		// AS MENSSAGENS QUE O SERVIDOR PRECISA RECEBER SAO ASSIM
+		// (VAR1/VAR2/VAR3/VAR4)
+		// VAR1 - LOG OU CAD
+		// VAR2 - EMAIL
+		// VAR3 - NOME
+		// VAR4 - SENHA
+		// LOG - LOGIN (LOG/EMAIL/NOME/SENHA)
+		// CAD - CADASTRO (CAD/EMAIL/NOME/SENHA)
 		try {
 			String ip, menssagem;
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

@@ -5,9 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import cliente.conection.ClientConexao;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -62,10 +67,18 @@ public class TelaLogin extends JFrame {
 				String senha = passwordField.getText();
 				
 				if (email.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigatï¿½rios nï¿½o preenchidos.");
+					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
 				} else if (senha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigatï¿½rios nï¿½o preenchidos.");
+					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
 				}
+				
+				String conexao = new TelaConexaoCliente().conexao();
+				
+				String mensagem = "LOG/" + email + "/" + nome + "/" + senha;
+				
+				ClientConexao c = new ClientConexao(conexao);
+				c.Envia(mensagem);
+				c.Recebe();
 				
 				TelaAplicacao login = new TelaAplicacao();
 				login.show();
