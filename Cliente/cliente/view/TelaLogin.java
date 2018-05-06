@@ -62,26 +62,28 @@ public class TelaLogin extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				String email = textFieldEmail.getText();
 				String senha = passwordField.getText();
-				
+
 				if (email.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
-				} else if (senha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
 				}
-				
-				String ipServidor = new TelaConexaoCliente().conexao();
-								
-				String mensagem = "LOG/" + email + "/" + nome + "/" + senha;
-				
-				ClientConexao c = new ClientConexao(ipServidor);
-				c.Envia(mensagem);
-				
-				TelaAplicacao login = new TelaAplicacao();
-				login.show();
-				dispose();
+				if (senha.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
+				} else {
+					String ipServidor = new TelaConexaoCliente().conexao();
+
+					String mensagem = "LOG/" + email + "/" + nome + "/" + senha;
+
+					ClientConexao c = new ClientConexao(ipServidor);
+					c.Envia(mensagem);
+
+					TelaAplicacao login = new TelaAplicacao();
+					login.show();
+					dispose();
+				}
+
 			}
 		});
 		btnEntrar.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -125,7 +127,7 @@ public class TelaLogin extends JFrame {
 		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblSenha.setBounds(36, 115, 61, 14);
 		contentPane.add(lblSenha);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(127, 114, 146, 20);
 		contentPane.add(passwordField);

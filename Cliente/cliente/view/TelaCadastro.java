@@ -97,7 +97,7 @@ public class TelaCadastro extends JFrame {
 					login.show();
 					dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "Senha e confirmaï¿½ï¿½o de senha nï¿½o conferem.");
+					JOptionPane.showMessageDialog(null, "Senha e confirmação de senha não conferem.");
 				}
 			}
 		});

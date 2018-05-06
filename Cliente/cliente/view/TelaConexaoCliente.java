@@ -10,6 +10,8 @@ import cliente.conection.ClientConexao;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -67,18 +69,25 @@ public class TelaConexaoCliente extends JFrame {
 		btnSalvar.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				try {
-					conexao();
+				if (textFieldIpServidor.getText().isEmpty() || textFieldIpServidor.getText() == "") {
+					JOptionPane.showMessageDialog(null, "Campo obrigatório não preenchido.");
+				} else {
+					try {
 
-					TelaLogin login = new TelaLogin();
-					login.show();
-					dispose();
-				} catch (UnknownHostException erro) {
-					// TODO Auto-generated catch block
-					erro.printStackTrace();
-				} catch (IOException erro) {
-					// TODO Auto-generated catch block
-					erro.printStackTrace();
+						conexao();
+
+						TelaLogin login = new TelaLogin();
+						login.show();
+						dispose();
+					} catch (UnknownHostException erro) {
+						// TODO Auto-generated catch block
+						erro.printStackTrace();
+						JOptionPane.showMessageDialog(null, "Catch 1");
+					} catch (IOException erro) {
+						// TODO Auto-generated catch block
+						erro.printStackTrace();
+						JOptionPane.showMessageDialog(null, "Catch 2");
+					}
 				}
 
 			}
@@ -100,7 +109,7 @@ public class TelaConexaoCliente extends JFrame {
 
 	public String conexao() throws UnknownHostException, IOException {
 		String ipServidor = textFieldIpServidor.getText();
-		
+
 		new ClientConexao(ipServidor);
 
 		return ipServidor;
