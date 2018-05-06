@@ -1,11 +1,8 @@
 package cliente.conection;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -14,6 +11,8 @@ public class ClientConexao {
 	
 	public ClientConexao(String ip) throws UnknownHostException, IOException{
 		this.connection = new Socket(ip, 11111);
+		Thread t = new Thread(new Recebe());
+        t.start();
 	}
 
 	public void Envia(String menssagem){
@@ -28,19 +27,22 @@ public class ClientConexao {
 		}
 	}
 	
-	public void Recebe(){
-		try{
-			ObjectInputStream server = new ObjectInputStream(connection.getInputStream());
-			String mensagem = null;
-			do{
-				mensagem = String.valueOf(server.readObject());
-				System.out.println(mensagem);
-			}while(true);
-			
-			//server.close();
-		}
-		catch(Exception erro) {
-			System.err.println(erro.getMessage());
-		}
-	}
+	private class Recebe implements Runnable {
+        @Override
+        public void run() {
+        	try{
+    			ObjectInputStream server = new ObjectInputStream(connection.getInputStream());
+    			String mensagem = null;
+    			do{
+    				mensagem = String.valueOf(server.readObject());
+    				System.out.println(mensagem);
+    			}while(true);
+    			
+    			//server.close();
+    		}
+    		catch(Exception erro) {
+    			System.err.println(erro.getMessage());
+    		}
+        }
+    }
 }

@@ -26,11 +26,12 @@ public class ClientMain {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("Digite o ip do servidor:\n");
 			ip = reader.readLine();
-			System.out.println("Digite a mensagem nos padroes VAR1/VAR2/VAR3/VAR4 :\n");
-			menssagem = reader.readLine();
 			ClientConexao c = new ClientConexao(ip);
-			c.Envia(menssagem);
-			c.Recebe();
+			while(true){
+				System.out.println("Digite a mensagem nos padroes VAR1/VAR2/VAR3/VAR4 :\n");
+				menssagem = reader.readLine();
+				c.Envia(menssagem);	
+			}
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
