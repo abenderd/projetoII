@@ -12,7 +12,9 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.UnknownHostException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -65,23 +67,33 @@ public class TelaLogin extends JFrame {
 
 				String email = textFieldEmail.getText();
 				String senha = passwordField.getText();
+				String nome;
 
 				if (email.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
+					JOptionPane.showMessageDialog(null, "Campos obrigatï¿½rios nï¿½o preenchidos.");
 				}
 				if (senha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigatórios não preenchidos.");
+					JOptionPane.showMessageDialog(null, "Campos obrigatï¿½rios nï¿½o preenchidos.");
 				} else {
-					String ipServidor = new TelaConexaoCliente().conexao();
+					String ipServidor;
+					try {
+						ipServidor = new TelaConexaoCliente().conexao();
+						String mensagem = "LOG/" + email + "/" + " " + "/" + senha;
 
-					String mensagem = "LOG/" + email + "/" + nome + "/" + senha;
+						ClientConexao c = new ClientConexao(ipServidor);
+						c.Envia(mensagem);
 
-					ClientConexao c = new ClientConexao(ipServidor);
-					c.Envia(mensagem);
+						// TelaAplicacao login = new TelaAplicacao();
+						// login.show();
+						// dispose();
+					} catch (UnknownHostException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
-					TelaAplicacao login = new TelaAplicacao();
-					login.show();
-					dispose();
 				}
 
 			}
@@ -120,7 +132,7 @@ public class TelaLogin extends JFrame {
 
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblEmail.setBounds(36, 56, 46, 14);
+		lblEmail.setBounds(36, 56, 61, 14);
 		contentPane.add(lblEmail);
 
 		JLabel lblSenha = new JLabel("Senha:");

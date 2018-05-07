@@ -49,7 +49,7 @@ public class ServerConexao {
 						t.transmite(connection, var2 + "Cadastrado com sucesso");
 					}else if(var1.equals("LOG")){
 						try {
-							cad = cadDao.getEmail(var2);
+							cad = cadDao.getUsuario(var2,var4);
 							System.out.println(cad.toString());
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
@@ -58,7 +58,7 @@ public class ServerConexao {
 							// TODO Auto-generated catch block
 							t.transmite(connection,var2 + "/" + e);
 						}
-						t.transmite(connection,var2 + "Logado com sucesso");
+						t.transmite(connection,cad.getNome() + " Logado com sucesso");
 					}else{
 						t.transmite(connection,var2 + "MENSSAGEM INVALIDA");
 					}

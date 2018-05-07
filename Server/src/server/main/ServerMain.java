@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import server.conection.ServerConexao;
 
-public class main {
+public class ServerMain {
 
 	ArrayList<ServerConexao> clientOutputStreams;
 
@@ -21,7 +21,7 @@ public class main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		new main().go();
+		new ServerMain().go();
 	}
 
 	private void go() {
@@ -60,7 +60,7 @@ public class main {
 		@Override
 		public void run() {
 			try {
-				System.out.println("Recebido uma nova conexão.");
+				System.out.println("Recebido uma nova conexï¿½o.");
 				conexao.conecta(receptor, connection);
 			} catch (NullPointerException e) {
 				System.out.println("Usuario Desconectado");

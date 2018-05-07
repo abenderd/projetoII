@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import javax.swing.JOptionPane;
+
 public class ClientConexao {
 	private Socket connection;
 	
@@ -36,6 +38,7 @@ public class ClientConexao {
     			do{
     				mensagem = String.valueOf(server.readObject());
     				System.out.println(mensagem);
+    				JOptionPane.showMessageDialog(null, mensagem);
     			}while(true);
     			
     			//server.close();

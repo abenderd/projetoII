@@ -44,22 +44,38 @@ public class CadastroDAO {
 			return isEmailIdValid;
 		}
 	}
+	
+	public boolean logar(String email, String senha)throws SQLException, Exception{
+		String sql;
+		try {
+			sql = "SELECT * FROM tbl_usuario WHERE eMail = '" + email +"' AND Senha = '" + senha +"';";
 
-	public CadastroDBO getEmail(String usuario) throws SQLException, Exception {
+			Conexao.conexao.prepareStatement(sql);
+
+			MeuResultSet resultado = (MeuResultSet) Conexao.conexao.executeQuery();
+
+			if (!resultado.first()){
+				return false;
+			}
+			return true;
+
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public CadastroDBO getUsuario(String email, String senha) throws SQLException, Exception {
 		CadastroDBO cadastroDBO = null;
 		String sql;
 
 		try {
-			sql = "SELECT * " + "FROM tbl_usuario " + "WHERE email = ?";
+			sql = "SELECT * FROM tbl_usuario WHERE eMail = '" + email +"' AND Senha = '" + senha +"'";
 
 			Conexao.conexao.prepareStatement(sql);
-
-			Conexao.conexao.setString(1, usuario);
-
 			MeuResultSet resultado = (MeuResultSet) Conexao.conexao.executeQuery();
 
 			if (!resultado.first())
-				throw new Exception("Usuario nao cadastrado.");
+				throw new Exception("Usuario ou senha invalida.");
 
 			cadastroDBO = new CadastroDBO(resultado.getString("email"), resultado.getString("senha"), resultado.getString("nome"));
 
