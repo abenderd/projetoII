@@ -30,7 +30,7 @@ public class CadastroDBO {
 			this.senha = senha;
 		}
 	}
-	
+
 	public void cadastroNome(String nome) {
 		if (this.nome == null || "".equals(nome)) {
 			JOptionPane.showMessageDialog(null, "Nome invalido ou nulo");
@@ -92,7 +92,8 @@ public class CadastroDBO {
 
 	@Override
 	public String toString() {
-		return "CadastroDBO [cadastroDao=" + cadastroDao + ", senha=" + senha + ", email=" + email + ", nome=" + nome + "]";
+		return "CadastroDBO [cadastroDao=" + cadastroDao + ", senha=" + senha + ", email=" + email + ", nome=" + nome
+				+ "]";
 	}
 
 	public String getSenha() {
@@ -102,7 +103,7 @@ public class CadastroDBO {
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}

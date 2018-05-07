@@ -10,15 +10,13 @@ public class Transmissor {
 	public void transmite(Socket connection, String menssagem) {
 		try {
 			ObjectOutputStream transmissor = new ObjectOutputStream(connection.getOutputStream());
-			
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			transmissor.writeObject(menssagem);
 			transmissor.flush();
-			//transmissor.close();
-		}
-		catch(Exception erro){
+			// transmissor.close();
+		} catch (Exception erro) {
 			System.err.println(erro.getMessage());
 		}
-	}
+	}	
 }
-

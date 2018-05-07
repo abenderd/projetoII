@@ -24,7 +24,7 @@ public class CadastroDAO {
 			Conexao.conexao.setString(3, dbos.getNome());
 			Conexao.conexao.executeUpdate();
 			Conexao.conexao.commit();
-			throw new Exception("Cadastro do usuario: ("+ dbos.getNome() +") realizado com sucesso!");
+			throw new Exception("Cadastro do usuario: (" + dbos.getNome() + ") realizado com sucesso!");
 		} catch (SQLException e) {
 			throw new Exception("Erro ao realizar cadastro." + e);
 		}
@@ -44,17 +44,17 @@ public class CadastroDAO {
 			return isEmailIdValid;
 		}
 	}
-	
-	public boolean logar(String email, String senha)throws SQLException, Exception{
+
+	public boolean logar(String email, String senha) throws SQLException, Exception {
 		String sql;
 		try {
-			sql = "SELECT * FROM tbl_usuario WHERE eMail = '" + email +"' AND Senha = '" + senha +"';";
+			sql = "SELECT * FROM tbl_usuario WHERE eMail = '" + email + "' AND Senha = '" + senha + "';";
 
 			Conexao.conexao.prepareStatement(sql);
 
 			MeuResultSet resultado = (MeuResultSet) Conexao.conexao.executeQuery();
 
-			if (!resultado.first()){
+			if (!resultado.first()) {
 				return false;
 			}
 			return true;
@@ -69,7 +69,7 @@ public class CadastroDAO {
 		String sql;
 
 		try {
-			sql = "SELECT * FROM tbl_usuario WHERE eMail = '" + email +"' AND Senha = '" + senha +"'";
+			sql = "SELECT * FROM tbl_usuario WHERE eMail = '" + email + "' AND Senha = '" + senha + "'";
 
 			Conexao.conexao.prepareStatement(sql);
 			MeuResultSet resultado = (MeuResultSet) Conexao.conexao.executeQuery();
@@ -77,14 +77,13 @@ public class CadastroDAO {
 			if (!resultado.first())
 				throw new Exception("Usuario ou senha invalida.");
 
-			cadastroDBO = new CadastroDBO(resultado.getString("email"), resultado.getString("senha"), resultado.getString("nome"));
+			cadastroDBO = new CadastroDBO(resultado.getString("email"), resultado.getString("senha"),
+					resultado.getString("nome"));
 
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
 
 		return cadastroDBO;
-
 	}
-
 }

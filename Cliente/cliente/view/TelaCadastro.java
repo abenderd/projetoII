@@ -171,4 +171,53 @@ public class TelaCadastro extends JFrame {
 			return isEmailIdValid;
 		}
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((passwordField == null) ? 0 : passwordField.hashCode());
+		result = prime * result + ((passwordFieldConfirmacao == null) ? 0 : passwordFieldConfirmacao.hashCode());
+		result = prime * result + ((textFieldEmail == null) ? 0 : textFieldEmail.hashCode());
+		result = prime * result + ((textFieldNome == null) ? 0 : textFieldNome.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TelaCadastro other = (TelaCadastro) obj;
+		if (passwordField == null) {
+			if (other.passwordField != null)
+				return false;
+		} else if (!passwordField.equals(other.passwordField))
+			return false;
+		if (passwordFieldConfirmacao == null) {
+			if (other.passwordFieldConfirmacao != null)
+				return false;
+		} else if (!passwordFieldConfirmacao.equals(other.passwordFieldConfirmacao))
+			return false;
+		if (textFieldEmail == null) {
+			if (other.textFieldEmail != null)
+				return false;
+		} else if (!textFieldEmail.equals(other.textFieldEmail))
+			return false;
+		if (textFieldNome == null) {
+			if (other.textFieldNome != null)
+				return false;
+		} else if (!textFieldNome.equals(other.textFieldNome))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "TelaCadastro [textFieldNome=" + textFieldNome + ", textFieldEmail=" + textFieldEmail
+				+ ", passwordField=" + passwordField + ", passwordFieldConfirmacao=" + passwordFieldConfirmacao + "]";
+	}
 }

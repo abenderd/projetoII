@@ -60,11 +60,41 @@ public class ServerMain {
 		@Override
 		public void run() {
 			try {
-				System.out.println("Recebido uma nova conex�o.");
+				System.out.println("Recebido uma nova conexao.");
 				conexao.conecta(receptor, connection);
 			} catch (NullPointerException e) {
 				System.out.println("Usuario Desconectado");
 			}
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((clientOutputStreams == null) ? 0 : clientOutputStreams.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ServerMain other = (ServerMain) obj;
+		if (clientOutputStreams == null) {
+			if (other.clientOutputStreams != null)
+				return false;
+		} else if (!clientOutputStreams.equals(other.clientOutputStreams))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ServerMain [clientOutputStreams=" + clientOutputStreams + "]";
 	}
 }

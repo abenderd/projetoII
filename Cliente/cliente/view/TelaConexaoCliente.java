@@ -82,11 +82,11 @@ public class TelaConexaoCliente extends JFrame {
 					} catch (UnknownHostException erro) {
 						// TODO Auto-generated catch block
 						erro.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Catch 1");
+						JOptionPane.showMessageDialog(null, erro);
 					} catch (IOException erro) {
 						// TODO Auto-generated catch block
 						erro.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Catch 2");
+						JOptionPane.showMessageDialog(null, erro);
 					}
 				}
 
@@ -113,5 +113,35 @@ public class TelaConexaoCliente extends JFrame {
 		new ClientConexao(ipServidor);
 
 		return ipServidor;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((textFieldIpServidor == null) ? 0 : textFieldIpServidor.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TelaConexaoCliente other = (TelaConexaoCliente) obj;
+		if (textFieldIpServidor == null) {
+			if (other.textFieldIpServidor != null)
+				return false;
+		} else if (!textFieldIpServidor.equals(other.textFieldIpServidor))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "TelaConexaoCliente [textFieldIpServidor=" + textFieldIpServidor + "]";
 	}
 }

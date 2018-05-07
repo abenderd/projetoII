@@ -70,10 +70,10 @@ public class TelaLogin extends JFrame {
 				String nome;
 
 				if (email.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigat�rios n�o preenchidos.");
+					JOptionPane.showMessageDialog(null, "Campos obrigatorios nao preenchidos.");
 				}
 				if (senha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campos obrigat�rios n�o preenchidos.");
+					JOptionPane.showMessageDialog(null, "Campos obrigatorios nao preenchidos.");
 				} else {
 					String ipServidor;
 					try {
@@ -143,5 +143,41 @@ public class TelaLogin extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(127, 114, 146, 20);
 		contentPane.add(passwordField);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((passwordField == null) ? 0 : passwordField.hashCode());
+		result = prime * result + ((textFieldEmail == null) ? 0 : textFieldEmail.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TelaLogin other = (TelaLogin) obj;
+		if (passwordField == null) {
+			if (other.passwordField != null)
+				return false;
+		} else if (!passwordField.equals(other.passwordField))
+			return false;
+		if (textFieldEmail == null) {
+			if (other.textFieldEmail != null)
+				return false;
+		} else if (!textFieldEmail.equals(other.textFieldEmail))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "TelaLogin [textFieldEmail=" + textFieldEmail + ", passwordField=" + passwordField + "]";
 	}
 }

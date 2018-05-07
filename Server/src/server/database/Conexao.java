@@ -14,8 +14,8 @@ public class Conexao {
 		CadastroDAO _cadastroDao = null;
 
 		try {
-			_conexao = new MeuPreparedStatement("com.mysql.jdbc.Driver","jdbc:mysql://127.0.0.1:3306/ProjetoII", "root", "");
-
+			_conexao = new MeuPreparedStatement("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/ProjetoII",
+					"root", "");
 
 			_cadastroDao = new CadastroDAO();
 
@@ -35,5 +35,4 @@ public class Conexao {
 	public static CadastroDAO getCadastrodao() {
 		return cadastroDao;
 	}
-
 }

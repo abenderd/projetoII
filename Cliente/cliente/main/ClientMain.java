@@ -26,10 +26,10 @@ public class ClientMain {
 			System.out.println("Digite o ip do servidor:\n");
 			ip = reader.readLine();
 			ClientConexao c = new ClientConexao(ip);
-			while(true){
+			while (true) {
 				System.out.println("Digite a mensagem nos padroes VAR1/VAR2/VAR3/VAR4 :\n");
 				menssagem = reader.readLine();
-				c.Envia(menssagem);	
+				c.Envia(menssagem);
 			}
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -38,5 +38,5 @@ public class ClientMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}	
 }
