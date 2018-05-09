@@ -35,7 +35,7 @@ public class TelaLogin extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void create() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -67,7 +67,6 @@ public class TelaLogin extends JFrame {
 
 				String email = textFieldEmail.getText();
 				String senha = passwordField.getText();
-				String nome;
 
 				if (email.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campos obrigatorios nao preenchidos.");

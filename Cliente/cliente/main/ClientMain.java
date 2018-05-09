@@ -1,16 +1,15 @@
 package cliente.main;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.UnknownHostException;
-
-import cliente.conection.ClientConexao;
+import cliente.view.TelaConexaoCliente;
 
 public class ClientMain {
 
 	public static void main(String[] args) {
 
+		TelaConexaoCliente t = new TelaConexaoCliente();
+		t.create();
+
+		/*
 		// FALTA FAZER MODO GRAFICO, FEITO EM TEXTO PARA TESTE
 		// AS MENSSAGENS QUE O SERVIDOR PRECISA RECEBER SAO ASSIM
 		// (VAR1/VAR2/VAR3/VAR4)
@@ -38,5 +37,6 @@ public class ClientMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	}	
 }

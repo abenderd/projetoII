@@ -35,7 +35,8 @@ public class TelaCadastro extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+
+	public void create() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -79,7 +80,7 @@ public class TelaCadastro extends JFrame {
 				} else if (senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo senha deve ser preenchido.");
 				} else if (confirmacaoSenha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campo confirmação de senha deve ser preenchido.");
+					JOptionPane.showMessageDialog(null, "Campo confirmaï¿½ï¿½o de senha deve ser preenchido.");
 				} else if (senha.equals(confirmacaoSenha)) {
 
 					try {
@@ -97,7 +98,7 @@ public class TelaCadastro extends JFrame {
 					login.show();
 					dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "Senha e confirmação de senha não conferem.");
+					JOptionPane.showMessageDialog(null, "Senha e confirmaï¿½ï¿½o de senha nï¿½o conferem.");
 				}
 			}
 		});

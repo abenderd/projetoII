@@ -31,7 +31,8 @@ public class TelaConexaoCliente extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+
+	public void create() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -70,7 +71,7 @@ public class TelaConexaoCliente extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				if (textFieldIpServidor.getText().isEmpty() || textFieldIpServidor.getText() == "") {
-					JOptionPane.showMessageDialog(null, "Campo obrigatório não preenchido.");
+					JOptionPane.showMessageDialog(null, "Campo obrigatï¿½rio nï¿½o preenchido.");
 				} else {
 					try {
 

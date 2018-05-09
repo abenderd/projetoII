@@ -10,7 +10,6 @@ import server.dbo.CadastroDBO;
 
 public class ServerConexao {
 	public void conecta(ServerSocket receptor, Socket connection) {
-		
 		try {
 			
 			Transmissor t = new Transmissor();
@@ -79,5 +78,10 @@ public class ServerConexao {
 		} catch (Exception erro) {
 			System.err.println(erro.getMessage());
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "ServerConexao [hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}	
 }
