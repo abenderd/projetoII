@@ -80,7 +80,7 @@ public class TelaCadastro extends JFrame {
 				} else if (senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo senha deve ser preenchido.");
 				} else if (confirmacaoSenha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campo confirmaï¿½ï¿½o de senha deve ser preenchido.");
+					JOptionPane.showMessageDialog(null, "Campo confirmacao de senha deve ser preenchido.");
 				} else if (senha.equals(confirmacaoSenha)) {
 
 					try {
@@ -94,7 +94,7 @@ public class TelaCadastro extends JFrame {
 					login.show();
 					dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "Senha e confirmaï¿½ï¿½o de senha nï¿½o conferem.");
+					JOptionPane.showMessageDialog(null, "Senha e confirmacao de senha nao conferem.");
 				}
 			}
 		});
