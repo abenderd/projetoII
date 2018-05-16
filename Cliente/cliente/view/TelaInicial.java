@@ -91,6 +91,8 @@ public class TelaInicial extends JFrame {
 		contentPane.add(lblNomeDaPessoa);
 		
 		textFieldSaldoDisponivel = new JTextField();
+		textFieldSaldoDisponivel.setEnabled(false);
+		textFieldSaldoDisponivel.setEditable(false);
 		textFieldSaldoDisponivel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textFieldSaldoDisponivel.setBounds(186, 112, 86, 20);
 		contentPane.add(textFieldSaldoDisponivel);
