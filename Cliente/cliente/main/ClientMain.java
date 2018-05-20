@@ -1,4 +1,4 @@
-package cliente.main;
+ package cliente.main;
 
 import cliente.view.TelaConexaoCliente;
 
